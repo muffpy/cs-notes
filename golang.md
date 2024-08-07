@@ -29,6 +29,10 @@ func Sqrt(x float64) (i int, z float64) {
 func main() {
 	iters, ans := Sqrt(2)
 	fmt.Println(iters, ans)
+	
+	mathlib_ans := math.Sqrt(2)
+	diff := math.Abs(mathlib_ans - ans)
+	fmt.Println(diff)
 }
 
 ```
