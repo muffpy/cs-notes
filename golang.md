@@ -8,20 +8,27 @@ package main
 
 import (
 	"fmt"
+	"math"
 )
 
-func Sqrt(x float64) (z float64) {
+func Sqrt(x float64) (i int, z float64) {
 	z = 1.0
-	i := 10
-	for i > 0 {
-		z -= (z*z - x) / (2*z)
-		i -= 1
+	i = 0
+	for {
+		err := (z*z - x)
+		z -= err / (2*z)
+		fmt.Println(err, z)
+		
+		if math.Abs(err) < 0.001 { break }
+		
+		i += 1
 	}
 	return
 }
 
 func main() {
-	fmt.Println(Sqrt(2))
+	iters, ans := Sqrt(2)
+	fmt.Println(iters, ans)
 }
 
 ```
