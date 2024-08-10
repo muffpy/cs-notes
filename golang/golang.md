@@ -133,4 +133,5 @@ func main() {
 }
 
 ```
-![alt text](image-x*y.png)
+![alt text](img-x*y.png)
+![alt text](img-avg.png)
