@@ -135,3 +135,4 @@ func main() {
 ```
 ![alt text](img-x*y.png)
 ![alt text](img-avg.png)
+![alt text](img-avg10.png)
