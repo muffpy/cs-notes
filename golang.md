@@ -112,6 +112,19 @@ package main
 import "golang.org/x/tour/pic"
 
 func Pic(dx, dy int) [][]uint8 {
+
+    out := make([][]uint8, dy)
+	
+	for i := range out {
+	
+		out[i] = make([]uint8, dx)
+		
+		for j := 0; j < dx; j++ {
+			
+		}
+	}
+	
+	return out
 }
 
 func main() {
