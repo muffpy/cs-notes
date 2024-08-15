@@ -173,3 +173,18 @@ func main() {
 	fmt.Println("The value:", v, "Present?", ok)
 }
 ```
+
+### Exercise: Maps (word count)
+```go
+package main
+
+import (
+	"golang.org/x/tour/wc"
+	"strings"
+)
+
+func main() {
+	wc.Test(WordCount)
+}
+
+```
