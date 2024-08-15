@@ -183,6 +183,21 @@ import (
 	"strings"
 )
 
+func WordCount(s string) map[string]int {
+	m := make(map[string]int)
+	
+	for w := range strings.Fields(s) {
+		if v, ok := m[w]; ok == true {
+			m[w] = v + 1
+		} else {
+			m[w] = 0
+		}
+		
+	}
+	
+	return m
+}
+
 func main() {
 	wc.Test(WordCount)
 }
