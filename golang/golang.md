@@ -260,3 +260,5 @@ func main() {
 }
 
 ```
+
+### Methods
