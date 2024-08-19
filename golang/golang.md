@@ -284,3 +284,5 @@ func main() {
 }
 
 ```
+
+### Pointer receivers
