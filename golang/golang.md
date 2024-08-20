@@ -314,3 +314,5 @@ func main() {
 }
 
 ```
+
+### Pointers and functions
