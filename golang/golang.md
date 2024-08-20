@@ -339,7 +339,7 @@ func Scale(v *Vertex, f float64) {
 
 func main() {
 	v := Vertex{3, 4}
-	Scale(&v, 10)
+	Scale(&v, 12)
 	fmt.Println(Abs(v))
 }
 
