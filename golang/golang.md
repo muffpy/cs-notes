@@ -344,3 +344,5 @@ func main() {
 }
 
 ```
+
+### Methods and pointer indirection
