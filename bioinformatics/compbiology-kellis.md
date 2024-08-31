@@ -18,4 +18,5 @@ Biological datasets are noisy and identifying robust signals from noise is an in
 ## Gene sequence alignment
 Sequence alignment is a powerful tool that assesses the similarity of sequences in order to learn about
 their function or their evolutionary relationship. If two genetic regions are similar or identical, sequence
-alignment can demonstrate the conserved elements or differences between them. 
+alignment can demonstrate the conserved elements or differences between them. Evolution has preserved
+two broad classes of functional elements in the genome.
