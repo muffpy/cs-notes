@@ -16,3 +16,5 @@ Biological datasets are noisy and identifying robust signals from noise is an in
 - How do we identify these regions of DNA from non-fucntional regions?
 
 ## Gene sequence alignment
+Sequence alignment is a powerful tool that assesses the similarity of sequences in order to learn about
+their function or their evolutionary relationship. 
