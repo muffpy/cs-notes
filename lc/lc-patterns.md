@@ -17,7 +17,73 @@ class Solution:
         return []
 ```
 
+### [121. Best Time to Buy and Sell Stock](https://leetcode.com/problems/best-time-to-buy-and-sell-stock/description/)
+
+- assume we have maxProfit(prices[:i-1]) and we also which day was the lowest price (minDay)
+- if prices[i] - minDay > maxProfit(prices[:i-1]), then we have a new maxProfit (sell day)
+- if prices[i] < minDay, then we have a new lowest price (buy day)
+- else, we're done
+
+```python
+class Solution:
+    # Beats 93% of solutions
+    def maxProfit(self, prices: List[int]) -> int:
+        minDay = prices[0]
+        maxProfit = 0
+        for i in prices[1:]:
+            if i < minDay:
+                minDay = i
+                continue
+            profit = i - minDay 
+            if profit > maxProfit:
+                maxProfit = profit
+
+        return maxProfit
+```
+
+### [242. Valid Anagram](https://leetcode.com/problems/valid-anagram/description/)
+- ord() function in Python is **used to convert a single Unicode character into its integer representation.**
+- create two arrays (for two strings) of length 26
+- convert each letter in both strings to integer using ord() and scale it down to 0-26
+- use this integer as an index and increment array value
+- both arrays should be equal for anagrams
+
+```python
+class Solution:
+    def isAnagram(self, s: str, t: str) -> bool:
+        s_arr, t_arr = [0]*26, [0]*26
+        for i in t:
+            t_arr[ord(i)-97] += 1
+        for i in s:
+            s_arr[ord(i)-97] += 1
+
+        return s_arr == t_arr
+```
+
 ## Two Pointers
+
+### [125. Valid Palindrome](https://leetcode.com/problems/valid-palindrome/description/)
+
+- two-pointer approach from both ends of string
+- first check if pointer values are alphanumeric and then check if equal
+
+```python
+class Solution:
+    def isPalindrome(self, s: str) -> bool:
+        l = 0
+        r = len(s) - 1
+        while l < r:
+            if not s[l].isalnum():
+                l += 1
+            elif not s[r].isalnum():
+                r -= 1
+            elif s[r].lower() == s[l].lower():
+                l += 1
+                r -= 1
+            else:
+                return False
+        return True
+```
 
 ## Sliding Window
 
@@ -64,6 +130,33 @@ class Solution:
             elif not st or (brpairs[st.pop()] != i):
                 return False
         return st == []
+```
+
+## Binary Tree
+
+### [226. Invert Binary Tree](https://leetcode.com/problems/invert-binary-tree/description/)
+
+- if root is null return null
+- store the old right subtree
+- invert the old left subtree and assign to new right subtree
+- invert the (stored) old right subtree and assign to new left subtree
+```python
+# Definition for a binary tree node.
+# class TreeNode:
+#     def __init__(self, val=0, left=None, right=None):
+#         self.val = val
+#         self.left = left
+#         self.right = right
+class Solution:
+    def invertTree(self, root: Optional[TreeNode]) -> Optional[TreeNode]:
+        if not root:
+            return root
+
+        prevright = root.right
+        root.right = self.invertTree(root.left)
+        root.left = self.invertTree(prevright)
+
+        return root
 ```
 
 ## Graphs
