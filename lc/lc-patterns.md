@@ -110,6 +110,25 @@ class Solution:
         return 0 if minsub > numsl else minsub
 ```
 
+## Binary Search
+[704. Binary Search](https://leetcode.com/problems/binary-search/description/)
+
+- get midpoint using (r+l)//2
+- Python floor division op (//) rounds to the nearest integer
+```python
+class Solution:
+    def search(self, nums: List[int], target: int) -> int:
+        l, r = 0, len(nums)-1
+        while l <= r:
+            m = (r + l) >> 1
+            if (nums[m] > target):
+                r = m - 1
+            elif (nums[m] < target):
+                l = m + 1
+            else:
+                return m
+        return -1
+```
 ## Stack
 
 ### [20. Valid Parentheses](https://leetcode.com/problems/valid-parentheses/description/)
@@ -161,6 +180,42 @@ class Solution:
 
 ## Graphs
 
+[733. Flood Fill](https://leetcode.com/problems/flood-fill/description/)
+- dfs outward from starting point
+- if cell has required color, then color the cell and continue dfs
+- else if cell is not required color or we reached end of grid, then return
+
+```cpp
+class Solution {
+public:
+    int r_size; int n_size;
+
+    void fillr(vector<vector<int>>& image, int r, int c, int oldcolor, int newcolor) {
+        if (r < 0 || c < 0 || r == this->r_size || c == this->n_size) {
+            return;
+        }
+        if (image[r][c] != oldcolor) {
+            return;
+        }
+
+        image[r][c] = newcolor;
+        fillr(image, r-1,c,oldcolor,newcolor);
+        fillr(image, r+1,c,oldcolor,newcolor);
+        fillr(image, r,c-1,oldcolor,newcolor);
+        fillr(image, r,c+1,oldcolor,newcolor);
+    }
+
+    vector<vector<int>> floodFill(vector<vector<int>>& image, int sr, int sc, int newcolor) {
+        this->r_size = image.size();
+        this->n_size = image[0].size();
+        int oldcolor = image[sr][sc];
+        if (oldcolor != newcolor) {
+            fillr(image, sr, sc, oldcolor, newcolor);
+        }
+        return image;
+    }
+};
+```
 ## Linked Lists
 
 ### [21. Merge Two Sorted Lists](https://leetcode.com/problems/merge-two-sorted-lists/description/)
