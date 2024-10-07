@@ -1,3 +1,8 @@
+### Problem #s
+1, 20, 21, 121, 125, 209, 226, 242, 409, 704 <br>
+733
+
+
 ## Arrays & Hashing
 
 ### [1. Two Sum](https://leetcode.com/problems/two-sum/description/)
@@ -41,6 +46,8 @@ class Solution:
         return maxProfit
 ```
 
+## Strings
+
 ### [242. Valid Anagram](https://leetcode.com/problems/valid-anagram/description/)
 - ord() function in Python is **used to convert a single Unicode character into its integer representation.**
 - create two arrays (for two strings) of length 26
@@ -58,6 +65,48 @@ class Solution:
             s_arr[ord(i)-97] += 1
 
         return s_arr == t_arr
+```
+
+### [409. Longest Palindrome](https://leetcode.com/problems/longest-palindrome/description/)
+
+- get frequency map of letters in word
+- observe that odd count letters can be used after decremting by 1
+- observe that even count letters can be used without change
+- if odd count letters occured, then we can use one of them without change
+
+Version 1:
+
+```cpp
+class Solution {
+public:
+    int longestPalindrome(string s) {
+        int freqs[58] = { };
+        for (auto ch: s) {
+            freqs[ch - 'A']++;
+        }
+
+        int total = 0; 
+
+        for (int i = 0; i < 58; ++i) {
+            int l = freqs[i];
+            if (l % 2) total += (l-1);
+            else total += l;
+        }
+        
+        if (total < s.length()) return total + 1; // odd counts exist
+        else return total;
+    }
+};
+```
+
+Version 2 (smaller):
+```cpp
+int longestPalindrome(string s) {
+    int odds = 0;
+    for (char c='A'; c<='z'; c++)
+        odds += count(s.begin(), s.end(), c) & 1;
+    return s.size() - odds + (odds > 0);
+}
 ```
 
 ## Two Pointers
@@ -111,7 +160,8 @@ class Solution:
 ```
 
 ## Binary Search
-[704. Binary Search](https://leetcode.com/problems/binary-search/description/)
+
+### [704. Binary Search](https://leetcode.com/problems/binary-search/description/)
 
 - get midpoint using (r+l)//2
 - Python floor division op (//) rounds to the nearest integer
@@ -180,7 +230,8 @@ class Solution:
 
 ## Graphs
 
-[733. Flood Fill](https://leetcode.com/problems/flood-fill/description/)
+### [733. Flood Fill](https://leetcode.com/problems/flood-fill/description/)
+
 - dfs outward from starting point
 - if cell has required color, then color the cell and continue dfs
 - else if cell is not required color or we reached end of grid, then return
